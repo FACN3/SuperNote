@@ -1,0 +1,34 @@
+{
+  "name": "supernote",
+  "version": "1.0.0",
+  "description": "Note Taking App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN3/SuperNote.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN3/SuperNote/issues"
+  },
+  "homepage": "https://github.com/FACN3/SuperNote#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.16.0",
+    "eslint-config-recommended": "^2.0.0",
+    "eslint-plugin-react": "^7.6.1",
+    "parcel-bundler": "^1.5.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
