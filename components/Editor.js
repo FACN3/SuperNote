@@ -26,8 +26,11 @@ export class Editor extends Component {
       title: this.state.title,
       description: this.state.description
     }
+
     let myNotes = this.state.allNotes;
-    myNotes.push(note);
+    if (this.state.title !== '' || this.state.description !== '') {
+      myNotes.push(note);
+    }
     this.setState({
       allNotes: myNotes,
       title: '',

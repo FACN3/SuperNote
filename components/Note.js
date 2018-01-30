@@ -66,5 +66,11 @@ export class Note extends Component {
         </div>
       );
     }
+  else {
+    return (
+      <div>
+      </div>
+    );
+  }
   }
 }
