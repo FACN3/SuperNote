@@ -1,0 +1,49 @@
+textarea {
+  width: 50%;
+  height: 5rem;
+  margin: auto;
+  background-color: white;
+}
+
+button {
+  border-style: none;
+  border-radius: 0.3rem;
+  margin: 0.5rem 0.5rem 0 0;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+}
+
+#root {
+  margin: 3.5rem;
+}
+
+#root2 {
+  margin: 3.5rem;
+}
+
+#note_title {
+  width: 50%;
+}
+
+#editor {
+  padding: 1.5rem;
+}
+
+#editor-save {
+  padding: 1rem;
+  background-color: #546e79;
+  color: white;
+}
+
+#editor-save:hover {
+  background-color: rgb(158, 103, 103);
+}
+
+.delete:hover {
+  background-color: red;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #64b6f3;
+  color: white;
+}

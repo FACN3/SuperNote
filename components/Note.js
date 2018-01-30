@@ -51,8 +51,8 @@ export class Note extends Component {
               <p>{this.state.newDescription}</p>
             </div>
             <div className="card-action">
-              <button onClick={this.delete}>Delete</button>
-              <button onClick={this.editing}>Edit</button>
+              <button className="delete" onClick={this.delete}>Delete</button>
+              <button className="edit" onClick={this.editing}>Edit</button>
             </div>
           </div>
         </div>

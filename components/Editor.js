@@ -2,11 +2,21 @@ import React from 'react';
 import { Component } from 'react';
 import { NoteContainer } from './NoteContainer';
 import { render } from 'react-dom';
+import '../styles.css';
 
 export class Editor extends Component {
   componentDidMount() {
     let notes = JSON.parse(localStorage.getItem('notes'))
     ? JSON.parse(localStorage.getItem('notes')) : [];
+
+    if (notes.length > 1) {
+      let isEmpty = notes.filter((a) => {
+        return a.title !== undefined || a.description !== undefined
+      });
+      if (isEmpty.length === 0) {
+        localStorage.clear();
+      }
+    }
 
     this.setState({allNotes: notes}, () => {
         render(
@@ -43,6 +53,12 @@ export class Editor extends Component {
 
     let myNotes = this.state.allNotes;
     if (this.state.title !== '' || this.state.description !== '') {
+      if (note.title.length > 30)
+        note.title.replace('\r', '\n');
+        
+      if (note.description.length > 30)
+        note.description.replace('\r', '\n');
+
       myNotes.push(note);
     }
     localStorage.setItem('notes', JSON.stringify(myNotes));
@@ -58,14 +74,19 @@ export class Editor extends Component {
   };
   render() {
     return (
-        <div>
-          <input onChange={this.recordInput} name="title" value={this.state.title} type="text" placeholder="Name your note here"/>
+        <div id="editor">
+          <div>
+          <input id="note_title" className="" onChange={this.recordInput} name="title" value={this.state.title}
+             type="text" placeholder="Name your note here">
+           </input>
+         </div>
           <br></br>
-          <textarea onChange={this.recordInput} placeholder="Write your note here..." name="editor" id="editor" cols="50"
-             rows="20" value={this.state.description}>
+          <textarea onChange={this.recordInput} placeholder="Write your note here..."
+            name="editor" id="editor"
+             value={this.state.description}>
           </textarea>
           <div>
-            <button onClick={this.clearAndSave}>Save</button>
+            <button id="editor-save" onClick={this.clearAndSave}>Save</button>
           </div>
         </div>
     );
