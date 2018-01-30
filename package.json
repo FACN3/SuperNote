@@ -28,6 +28,7 @@
     "parcel-bundler": "^1.5.1"
   },
   "dependencies": {
+    "materialize-css": "^0.100.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }
