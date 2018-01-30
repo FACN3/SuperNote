@@ -1,9 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
-import Mario from '../mario.json';
+import { NoteContainer } from './NoteContainer';
+import { render } from 'react-dom';
+
 
 export class Editor extends Component {
   state = {
+    allNotes: [],
     title: "",
     description: ""
   };
@@ -18,12 +21,19 @@ export class Editor extends Component {
       })
     }
   };
-  saveAndClear = () => {
-    const title = this.state.title
-      const note = {
-        [title]: this.state.description
-      }
-      console.log(note);
+  clearAndSave = () => {
+    const note = {
+      title: this.state.title,
+      description: this.state.description
+    }
+    let myNotes = this.state.allNotes;
+    myNotes.push(note);
+    this.setState({
+      allNotes: myNotes,
+      title: '',
+      description: ''
+    }, () => render(<NoteContainer allNotes={this.state.allNotes}/>,this.props.noteRoot));
+
   };
   render() {
     return (
@@ -34,7 +44,7 @@ export class Editor extends Component {
              rows="20" value={this.state.description}>
           </textarea>
           <div>
-            <button onClick={this.saveAndClear}>Save</button>
+            <button onClick={this.clearAndSave}>Save</button>
           </div>
         </div>
     );
