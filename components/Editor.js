@@ -4,6 +4,18 @@ import { NoteContainer } from './NoteContainer';
 import { render } from 'react-dom';
 
 export class Editor extends Component {
+  componentDidMount() {
+    let notes = JSON.parse(localStorage.getItem('notes'))
+    ? JSON.parse(localStorage.getItem('notes')) : [];
+
+    this.setState({allNotes: notes}, () => {
+        render(
+          <NoteContainer allNotes={this.state.allNotes} />,
+          this.props.noteRoot
+        );
+      }
+    );
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -23,22 +35,6 @@ export class Editor extends Component {
       })
     }
   };
-  componentDidMount() {
-    let notes = JSON.parse(localStorage.getItem('notes'))
-    ? JSON.parse(localStorage.getItem('notes')) : [];
-
-    this.setState(
-      {
-        allNotes: notes
-      },
-      () => {
-        render(
-          <NoteContainer allNotes={this.state.allNotes} />,
-          this.props.noteRoot
-        );
-      }
-    );
-  }
   clearAndSave = () => {
     const note = {
       title: this.state.title,
