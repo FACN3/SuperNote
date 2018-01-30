@@ -8,9 +8,11 @@ export class NoteContainer extends Component {
   }
   render() {
     return (
-      this.state.notes.map((note, i) => {
+      <div className="container">
+      {this.state.notes.map((note, i) => {
         return <Note key={i} title={note.title} description={note.description} />
-      })
+      })}
+    </div>
     );
   }
 }
