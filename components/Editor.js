@@ -53,6 +53,12 @@ export class Editor extends Component {
 
     let myNotes = this.state.allNotes;
     if (this.state.title !== '' || this.state.description !== '') {
+      if (note.title.length > 30)
+        note.title.replace('\r', '\n');
+        
+      if (note.description.length > 30)
+        note.description.replace('\r', '\n');
+
       myNotes.push(note);
     }
     localStorage.setItem('notes', JSON.stringify(myNotes));
