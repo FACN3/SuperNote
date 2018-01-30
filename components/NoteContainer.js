@@ -1,18 +1,26 @@
-import React from 'react';
-import { Component } from 'react';
-import { Note } from './Note';
+import React from "react";
+import { Component } from "react";
+import { Note } from "./Note";
 
 export class NoteContainer extends Component {
-  state =  {
+  state = {
     notes: this.props.allNotes
-  }
+  };
   render() {
     return (
       <div className="container">
-      {this.state.notes.map((note, i) => {
-        return <Note key={i} title={note.title} description={note.description} />
-      })}
-    </div>
+        {this.state.notes.map((note, i) => {
+          console.log(i);
+          return (
+            <Note
+              key={i}
+              index={i}
+              title={note.title}
+              description={note.description}
+            />
+          );
+        })}
+      </div>
     );
   }
 }
