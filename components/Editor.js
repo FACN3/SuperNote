@@ -3,13 +3,15 @@ import { Component } from 'react';
 import { NoteContainer } from './NoteContainer';
 import { render } from 'react-dom';
 
-
 export class Editor extends Component {
-  state = {
-    allNotes: [],
-    title: "",
-    description: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      allNotes: [],
+      title: "",
+      description: "",
+    };
+  }
   recordInput = (e) => {
     if (e.target.name === "title") {
       this.setState({
@@ -21,6 +23,22 @@ export class Editor extends Component {
       })
     }
   };
+  componentDidMount() {
+    let notes = JSON.parse(localStorage.getItem('notes'))
+    ? JSON.parse(localStorage.getItem('notes')) : [];
+
+    this.setState(
+      {
+        allNotes: notes
+      },
+      () => {
+        render(
+          <NoteContainer allNotes={this.state.allNotes} />,
+          this.props.noteRoot
+        );
+      }
+    );
+  }
   clearAndSave = () => {
     const note = {
       title: this.state.title,
@@ -31,12 +49,16 @@ export class Editor extends Component {
     if (this.state.title !== '' || this.state.description !== '') {
       myNotes.push(note);
     }
+    localStorage.setItem('notes', JSON.stringify(myNotes));
     this.setState({
       allNotes: myNotes,
       title: '',
       description: ''
-    }, () => render(<NoteContainer allNotes={this.state.allNotes}/>,this.props.noteRoot));
-
+    }, () => render(
+        <NoteContainer allNotes={this.state.allNotes}/>,
+        this.props.noteRoot
+      )
+    );
   };
   render() {
     return (
