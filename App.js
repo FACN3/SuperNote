@@ -1,8 +1,8 @@
-import React from 'react';
-import { Editor } from './components/Editor';
+import React from "react";
+import { Editor } from "./components/Editor";
 
-export const App = (props) => (
+export const App = props => (
   <div className="container blue-grey lighten-5">
-    <Editor noteRoot={props.noteRoot}/>
+    <Editor noteRoot={props.noteRoot} />
   </div>
 );
