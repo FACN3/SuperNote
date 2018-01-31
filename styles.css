@@ -47,3 +47,6 @@ button {
   background-color: #64b6f3;
   color: white;
 }
+.break_word {
+  word-wrap: break-word;
+}
